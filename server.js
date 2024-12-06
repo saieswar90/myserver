@@ -207,7 +207,7 @@ app.get('/climate', async (req, res) => {
 // Route to fetch digisoil data from MongoDB (with pagination, 10 results)
 app.get('/digisoil', async (req, res) => {
     try {
-        const data = await DigiSoil.find().sort({ timestamp: -1 });
+        const data = await DigiSoil.find().sort({ timestamp: -1 }).limit(10);
         res.json(data);
     } catch (err) {
         res.status(500).json({ message: err.message });
